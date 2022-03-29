@@ -1,151 +1,73 @@
 .content {
     background: url('../assets/reciplease-landing.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
-    background-size: cover;
 }
+
 .landing-title {
     font-family: 'Rock Salt';
-    font-size: 72px;
-    margin-bottom: 7rem;
+    font-size: 5rem;
+    text-align: center;
+
+    @media(min-width: 688px) {
+        font-size: 6rem;
+    }
+
+    @media(min-width: 992px) {
+        font-size: 7rem;
+    }
 }
+
 .landing-description {
     font-family: Roboto;
-    font-size: 28px;
-    width: 30%;
+    font-size: 2rem;
+    width: 60%;
     text-align: center;
-    margin-bottom: 7rem;
-    font-weight: 400;
 }
 
-.loading_container {
+.button-container {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-}
-.card_container {
-    margin-top: 3vh;
-    width: 84vw;
-    height: 40vh;
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-
-    .card {
-        flex: 0 0 auto;
-        width: 250px;
-        height: 90%;
-        margin: 0 1.5vw 0;
-        background-color: white;
-        overflow-y: scroll;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-
-        img {
-            width: 100%;
-        }
-
-        .card_content {
-            padding: 10px;
-
-            h1 {
-                font-size: 1.8rem;
-                text-align: center;
-                font-weight: 500;
-            }
-    
-            p {
-                font-size: 1.2rem;
-                margin-top: 5px;
-                line-height: 1.5;
-            }
-        }
-
-    }
-}
-.not_active {
-    &::-webkit-scrollbar {
-        display: none;
-    }
-}
-#landing-btn {
-    font-family: Roboto;
-    width: 30%;
-    background: #fcde7b;
-    border: none;
-    font-size: 24px;
-    font-weight: 400;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
     transition: .25s ease-in-out;
-    padding: 2rem 2rem;
-    border-radius: .5rem;
 
-    &:hover {
-        background: coral;
-        cursor: pointer;
-        color: white;
-        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3);
-    }
-}
-
-@media (max-width: 850px) {
-    .landing-description {
-        width: 80%;
-    }
-    #landing-btn {
-        width: 50%;
-    }
-}
-
-@media (max-width: 500px) {
-    .content {
-        background: url('../assets/reciplease-landing.png');
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 0 2rem;
-        background-size: cover;
-    }
-    .landing-title {
-        font-family: 'Rock Salt';
-        font-size: 36px;
-        margin-bottom: 7rem;
-    }
-    .landing-description {
-        font-family: Roboto;
-        font-size: 20px;
-        width: 90%;
-        text-align: center;
-        margin-bottom: 7rem;
-        font-weight: 400;
-    }
-    #landing-btn {
-        background: #fcde7b;
-        padding: 2rem 1rem;
-        width: 80vw;
-        font-size: 28px;
-        color: black;
+    .ant-btn {
+        background: #FCDE7B;
         border: none;
+        width: 70%;
+        height: 100%;
+        border-radius: 5px;
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
-        transition: .25s ease-in-out;
-    
+
         &:hover {
-            cursor: pointer;
             background: coral;
-            color: white;
-            box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3);
+        }
+        
+        span {
+            font-size: 2rem;
+            font-family: 'Roboto', sans-serif;
+            color: black;
+            transition: .25s ease-in-out;
+
+            &:hover {
+                color: #fafafa;
+            }
+        }
+
+        @media(min-width: 688px) {
+            width: 40%;
+        }
+
+        @media(min-width: 992px) {
+            width: 30%;
         }
     }
 }
