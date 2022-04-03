@@ -9,65 +9,53 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.landing-title {
-    font-family: 'Rock Salt';
-    font-size: 5rem;
-    text-align: center;
-
-    @media(min-width: 688px) {
-        font-size: 6rem;
+    
+    .landing-title {
+        font-family: 'Rock Salt';
+        font-size: 5rem;
+        text-align: center;
+    
+        @media(min-width: 688px) {
+            font-size: 6rem;
+        }
+    
+        @media(min-width: 992px) {
+            font-size: 7rem;
+        }
     }
 
-    @media(min-width: 992px) {
-        font-size: 7rem;
+    .landing-description {
+        font-family: Roboto;
+        font-size: 2rem;
+        width: 60%;
+        text-align: center;
     }
-}
 
-.landing-description {
-    font-family: Roboto;
-    font-size: 2rem;
-    width: 60%;
-    text-align: center;
-}
-
-.button-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: .25s ease-in-out;
-
-    .ant-btn {
+    .ant-btn-primary {
         background: #FCDE7B;
+        color: black;
         border: none;
         width: 70%;
-        height: 100%;
-        border-radius: 5px;
+        height: 07vh;
+        border-radius: 20px;
         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+        font-size: 2rem;
 
         &:hover {
             background: coral;
-        }
-        
-        span {
-            font-size: 2rem;
-            font-family: 'Roboto', sans-serif;
-            color: black;
-            transition: .25s ease-in-out;
-
-            &:hover {
-                color: #fafafa;
-            }
+            color: #fafafa;
         }
 
         @media(min-width: 688px) {
             width: 40%;
         }
-
+    
         @media(min-width: 992px) {
             width: 30%;
         }
     }
 }
+
+
+
+
