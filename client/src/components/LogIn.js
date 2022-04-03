@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Loading3QuartersOutlined } from '@ant-design/icons'
+import { Loading3QuartersOutlined } from '@ant-design/icons';
+import { Input, Button, Alert } from 'antd';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,11 +19,14 @@ const initialValues = {
 function LogIn() {
     const [loginValues, setLoginValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState(initialValues);
-    const [disables, setDisabled] = useState(true);
-    const [signUpSuccess, setSignUpSuccess] = useState({
+    const [disabled, setDisabled] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [loginStatus, setLoginStatus] = useState(false);
+    const [loginMessage, setLoginMessage] = useState({
         message: "",
-        activeClass: ""
+        type: ""
     })
+    
 
     const history = useNavigate();
     const dispatch = useDispatch();
@@ -52,17 +56,18 @@ function LogIn() {
     
     const onSubmit = (e) => {
         e.preventDefault()
-        setSignUpSuccess({
-            message: <Loading3QuartersOutlined spin style={loadingIconStyle} />,
-            activeClass: signUpSuccess.activeClass
-        })
+        setLoading(true);
 
         axios.post('https://reciplease-backend.vercel.app/users/login', {email: loginValues.email.toLowerCase(), password: loginValues.password})
             .then(res => {
-                setSignUpSuccess({
-                    message: "Login Successful!",
-                    activeClass: "success-modal"
+                setLoading(false);
+                setLoginMessage({
+                    message: "Login Successful!", 
+                    type: "success"
                 })
+
+                setLoginStatus(true);
+
 
                 dispatch(getUser({username: res.data.username, email: loginValues.email}));
                 localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email.toLowerCase()}))
@@ -74,45 +79,58 @@ function LogIn() {
             })
 
             .catch(err => {
-                setSignUpSuccess({
+                setLoading(false)
+                setLoginMessage({
                     message: err.response.data.message,
-                    activeClass: "error-modal"
+                    type: "error"
                 })
+                setLoginStatus(true)
             })
-    }
-
-    const loadingIconStyle = {
-        fontSize: '3rem',
-        width: '100%'
     }
     
     return (
         <div className="login-screen">
             <div className="login-wrapper">
                 <h1>Login</h1>
-                <p>Welcome back! Lettuce show you some more recipes to fall in love with!</p>
-                {formErrors.email && <p className='errors'>{formErrors.email}</p>}
-                {formErrors.password && <p className='errors'>{formErrors.password}</p>}
+                <p className='login-desc'>Welcome back! Lettuce show you some more recipes to fall in love with!</p>
 
-                {signUpSuccess && <p className={signUpSuccess.activeClass}>{signUpSuccess.message}</p>}
+                { loading && <Loading3QuartersOutlined spin />}
+
+                {loginStatus && 
+                    <Alert 
+                        message={loginMessage.message}
+                        type={loginMessage.type}
+                        showIcon
+                    />}
+
                 <form onSubmit={onSubmit}>
-                    <input
-                        className="login-input"
-                        type='text'
-                        name='email'
-                        placeholder='Email'
-                        onChange={handleChange}
-                    />
-                    <input
-                        className="login-input"
-                        type='password'
-                        name='password'
-                        placeholder='Password'
-                        onChange={handleChange}
-                    />
-                    <button disabled={disables} className="login-btn">Let's get cook'n</button>
+                    <div className="input-container">
+                        <Input
+                            className="login-input"
+                            type='text'
+                            name='email'
+                            placeholder='Email'
+                            onChange={handleChange}
+                        />
+                        {formErrors.email && <p className='errors'>{formErrors.email}</p>}
+                    </div>
+
+                    <div className="input-container">
+                        <Input
+                            className="login-input"
+                            type='password'
+                            name='password'
+                            placeholder='Password'
+                            onChange={handleChange}
+                        />
+                        {formErrors.password && <p className='errors'>{formErrors.password}</p>}
+                    </div>
+
+                    <Button type='primary' disabled={disabled} className="login-btn" htmlType="submit">Login</Button>
+
                     <p className='options'>
-                        Don't have an account? <Link to='/signup' className='options-link'>Sign up here</Link> <br />
+                        Don't have an account? <br /> 
+                        <Link to='/signup' className='options-link'>Sign up here</Link> <br />
                         <Link to='/forgot' className='options-link'>Forgot password?</Link>
                     </p>
                 </form>

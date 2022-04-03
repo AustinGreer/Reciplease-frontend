@@ -1,14 +1,15 @@
 .login-screen {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     background: url('../assets/edgar-castrejon-1CsaVdwfIew-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 20% 45%;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .login-wrapper {
@@ -16,82 +17,120 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 90%;
     background: rgba(235, 244, 255, 0.95);
+
+    @media(min-width: 688px) {
+        width: 50%;
+    }
+
+    @media(min-width: 992px) {
+        width: 35%;
+    }
+
     h1 {
-        font-size: 6.4rem;
+        font-size: 6rem;
         margin-top: 5%;
         margin-bottom: 4%;
         font-weight: bold;
+
+        @media(min-width: 992px) {
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
     }
-    p {
+
+    .login-desc {
         font-size: 1.8rem;
         line-height: 24px;
-        width: 454px;
+        width: 90%;
         text-align: center;
+        margin-bottom: 5%;
+
+        @media(min-width: 992px) {
+            font-size: 1.5rem;
+            margin-bottom: 3%;
+        }
+    }
+
+    .anticon-spin {
+        font-size: 3rem;
+        width: 100%;
         margin-bottom: 5%;
     }
 
-    .error-modal {
-        background: #ea1601;
-        color: white;
-        border-radius: 10px;
-        width: 55%;
-        padding: 2%;
-    }
-
-    .success-modal {
-        background: #64bc26;
-        color: white;
-        border-radius: 10px;
-        width: 55%;
-        padding: 2%;
+    .ant-alert {
+        margin-bottom: 5%;
+        font-size: 1.5rem;
     }
     
-    .errors {
-        color: red;
-    }
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
 
+        .input-container {
+            width: 85%;
+            margin-bottom: 7%;
 
-        .login-input {
-            margin-bottom: 5%;
-            background: #ffffff;
-            width: 65%;
-            box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
-            font-size: 2.4rem;
-            border: none;
-            height: 50px;
-            padding-left: 3%;
+            @media(min-width: 992px) {
+                margin-bottom: 4%;
+            }
+
+            .login-input {
+                background: #fafafa;
+                width: 100%;
+                box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+                font-size: 2.4rem;
+                border: none;
+                height: 07vh;
+                padding-left: 3%;
+
+                @media(min-width: 992px) {
+                    height: 05vh;
+                    font-size: 1.8rem;
+                }
+            }
+    
+            .errors {
+                color: red;
+                width: 85%;
+                text-align: left;
+                font-size: 1.5rem;
+            }
         }
-
+        
         .login-btn {
             background: #FCDE7B;
-            border: none;
-            font-size: 2.5rem;
-            width: 65%;
-            margin-top: 2%;
-            margin-bottom: 5%;
-            box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
-            text-transform: none;
             color: black;
+            width: 85%;
+            height: 07vh;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+            font-size: 2.5rem;
+            font-family: 'Roboto', sans-serif;
             transition: .25s ease-in-out;
-            cursor: pointer;
-            padding: 1rem 0;
+            margin-bottom: 8%;
 
             &:hover {
                 background: coral;
-                color: white;
+                color: #fafafa;
             }
         }
     }
+
     .options {
         font-size: 2rem;
         line-height: 24px;
+        width: 90%;
+        text-align: center;
+
+        @media(min-width: 992px) {
+            font-size: 1.5rem;
+        }
+
         a {
             font-size: 2rem;
             line-height: 24px;
@@ -100,125 +139,9 @@
             &:hover {
                 border-bottom: 2px solid #f17012;
             }
-        }
-    }
-}
-.cookin-button-login {
-    background: #FCDE7B;
-    border-radius: .5rem;
-    font-size: 2.8rem;
-    box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
-    border: none;
-    transition: .25s ease-in-out;
-    align-self: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    width: 25vw;
 
-        .options {
-            font-size: 2rem;
-
-            a {
-                color: #f17012;
-
-                &:hover {
-                    border-bottom: 2px solid #f17012;
-                }
-                
-            }
-        }
-
-        
-    }
-
-@media (max-width: 850px) {
-    .login-wrapper {
-        width: 80%;
-    }
-}
-
-@media (max-width: 500px) {
-    #login-input {
-        border: none;
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .2);
-        margin-bottom: 2rem;
-        width: 80%;
-        height: 50px;
-        font-size: 24px;
-        padding-left: 8px;
-        background: white;
-    }
-    .login-screen {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        background: url('../assets/edgar-castrejon-1CsaVdwfIew-unsplash.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: 20% 45%;
-    }
-    .login-wrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        background: rgba(235, 244, 255, 0.95);
-        h1 {
-            font-size: 4rem;
-            margin-top: 5%;
-            margin-bottom: 4%;
-            font-weight: bold;
-        }
-        p {
-            font-size: 1.3rem;
-            width: 80%;
-            text-align: center;
-            margin-bottom: 5%;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            .MuiFormControl-root {
-                margin-bottom: 5%;
-                width: 358px;
-                background: #ffffff;
-                width: 60%;
-                box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
-                
-                input {
-                    font-size: 2.5rem;
-                }
-            }
-            .login-btn {
-                background: #FCDE7B;
-                font-size: 2rem;
-                border-radius: .5rem;
-                box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
-                border: none;
-                transition: .25s ease-in-out;
-                align-self: center;
-                margin-top: 2.5rem;
-                margin-bottom: 3rem;
-                width: 65%;
-            
-                &:hover {
-                    background: coral;
-                    color: white;
-                    cursor: pointer;
-                }
-            }
-        }
-        .options {
-            font-size: 1.3rem;
-            a {
-                font-size: 1.3rem;
-                color: #F17012;
+            @media(min-width: 992px) {
+                font-size: 1.5rem;
             }
         }
     }
